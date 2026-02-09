@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Satisfy&display=swap');
 
-/* ══════════════════════════════════════════════════
-   PREMIUM VALENTINE DESIGN SYSTEM — For QT 💝
-   ══════════════════════════════════════════════════ */
+/* valentine theme styles */
 
 :root {
   --rose: #e11d48;
@@ -43,7 +41,7 @@
   --radius-full: 9999px;
 }
 
-/* ══════ RESET ══════ */
+/* --- reset --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
@@ -59,7 +57,7 @@ img, video { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; border: none; outline: none; font-family: inherit; }
 
-/* ══════ PAGE BACKGROUNDS ══════ */
+/* page backgrounds */
 .page-bg {
   position: relative;
   min-height: 100vh;
@@ -80,7 +78,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   z-index: 0;
 }
 
-/* ══════ GLASS ══════ */
+/* glassmorphism */
 .glass {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -98,7 +96,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   border-radius: var(--radius-lg);
 }
 
-/* ══════ CARDS ══════ */
+/* cards */
 .premium-card {
   background: rgba(255, 255, 255, 0.92);
   border-radius: var(--radius-md);
@@ -123,7 +121,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   border-color: var(--rose-200);
 }
 
-/* ══════ TYPOGRAPHY ══════ */
+/* typography */
 .font-script { font-family: var(--font-script); }
 .font-elegant { font-family: var(--font-elegant); }
 .font-dance { font-family: var(--font-dance); }
@@ -142,7 +140,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   color: transparent;
 }
 
-/* ══════ BUTTONS ══════ */
+/* buttons */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -194,7 +192,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   transform: translateY(-2px);
 }
 
-/* ══════ FLOATING HEARTS ══════ */
+/* floating hearts animation */
 .particles-overlay {
   position: fixed;
   inset: 0;
@@ -216,7 +214,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   100% { transform: translateY(-110vh) rotate(360deg) scale(0.8); opacity: 0; }
 }
 
-/* ══════ ANIMATIONS ══════ */
+/* animations */
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @keyframes float-slow { 0%, 100% { transform: translateY(0) rotate(0deg); } 33% { transform: translateY(-8px) rotate(1deg); } 66% { transform: translateY(-4px) rotate(-1deg); } }
 @keyframes pulse-soft { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.03); opacity: 0.92; } }
@@ -238,7 +236,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
 .animate-wiggle { animation: wiggle 1s ease-in-out infinite; }
 .animate-glow { animation: glow-pulse 2s ease-in-out infinite; }
 
-/* ══════ ORNAMENTS ══════ */
+/* ornaments / decorative lines */
 .ornament-line { width: 120px; height: 2px; background: linear-gradient(90deg, transparent, var(--rose-light), transparent); margin: 0 auto; }
 .golden-border {
   border: 2px solid transparent;
@@ -251,14 +249,14 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   line-height: 2rem;
 }
 
-/* ══════ SCROLLBAR ══════ */
+/* custom scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--rose-50); }
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--rose-light), var(--rose)); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--rose); }
 ::selection { background: var(--rose-light); color: #fff; }
 
-/* ══════ MOBILE OPTIMIZATIONS ══════ */
+/* mobile */
 .hide-xs { display: inline; }
 @media (max-width: 640px) {
   :root {
@@ -295,7 +293,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   .btn-primary { padding: 12px 24px; font-size: 0.95rem; }
 }
 
-/* ══════ SAFE AREAS (notch phones) ══════ */
+/* safe area for notch phones */
 @supports (padding: max(0px)) {
   body {
     padding-left: env(safe-area-inset-left);
@@ -303,7 +301,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   }
 }
 
-/* ══════ TOUCH DEVICES ══════ */
+/* touch device overrides */
 @media (hover: none) and (pointer: coarse) {
   .premium-card:hover::before { left: -100%; }
   .premium-card:hover { transform: none; }
@@ -311,7 +309,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   .btn-primary:active { transform: scale(0.96); }
 }
 
-/* ══════ REDUCED MOTION ══════ */
+/* reduced motion a11y */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -321,7 +319,7 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
   .floating-heart { display: none; }
 }
 
-/* ══════ LANDSCAPE MOBILE ══════ */
+/* landscape fix */
 @media (max-height: 500px) and (orientation: landscape) {
   .page-bg { min-height: auto; }
 }

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import FloatingHearts from '../components/FloatingHearts';
 import { useValentine } from '../context/ValentineContext';
 
-/* ═══════ DATA ═══════ */
+// content data
 const SAD_STAGES = [
   {
     emoji: '🥺',
@@ -66,7 +66,6 @@ const LOVE_QUOTES = [
 
 const FLOATING_EMOJIS = ['💝', '💕', '🌹', '✨', '💗', '🦋', '💖', '🫶', '💐', '🥰', '💘', '🌸'];
 
-/* ═══════ COMPONENT ═══════ */
 const LandingPage = () => {
   const navigate = useNavigate();
   const { sayYes } = useValentine();
@@ -83,7 +82,7 @@ const LandingPage = () => {
   const [showContent, setShowContent] = useState(false);
   const [heartBursts, setHeartBursts] = useState([]);
 
-  /* ── Intro sequence (fast) ── */
+  // intro sequence
   useEffect(() => {
     const t1 = setTimeout(() => setIntroStage(1), 400);
     const t2 = setTimeout(() => setIntroStage(2), 1100);
@@ -92,13 +91,13 @@ const LandingPage = () => {
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
   }, []);
 
-  /* ── Cycle love quotes ── */
+  // cycle through love quotes
   useEffect(() => {
     const t = setInterval(() => setQuoteIdx(p => (p + 1) % LOVE_QUOTES.length), 3500);
     return () => clearInterval(t);
   }, []);
 
-  /* ── Ambient rising emoji particles (light) ── */
+  // ambient floating emoji particles
   useEffect(() => {
     if (!showContent) return;
     const interval = setInterval(() => {
@@ -129,7 +128,7 @@ const LandingPage = () => {
     setTimeout(() => { sayYes(); navigate('/celebration'); }, 500);
   };
 
-  /* ── Auto-float: continuously drift NO button around viewport ── */
+  // make the no button float around the screen lol
   useEffect(() => {
     if (!showContent) return;
     const pad = 20;
@@ -178,7 +177,7 @@ const LandingPage = () => {
   const yesLabel = YES_LABELS[Math.min(Math.floor(hoverCount / 3), YES_LABELS.length - 1)];
   const emotionalText = EMOTIONAL_TEXTS[Math.min(hoverCount, EMOTIONAL_TEXTS.length - 1)];
 
-  /* ── Motion variants ── */
+  // animation variants
   const item = {
     hidden: { opacity: 0, y: 22 },
     show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] } },
@@ -186,9 +185,7 @@ const LandingPage = () => {
 
   return (
     <>
-      {/* ══════════════════════════════
-          INTRO OVERLAY
-         ══════════════════════════════ */}
+      {/* intro overlay */}
       <AnimatePresence>
         {showIntro && (
           <motion.div
@@ -263,9 +260,7 @@ const LandingPage = () => {
         )}
       </AnimatePresence>
 
-      {/* ══════════════════════════════
-          MAIN PAGE
-         ══════════════════════════════ */}
+      {/* main page */}
       <div className="page-bg" style={{
         minHeight: '100dvh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
@@ -301,9 +296,7 @@ const LandingPage = () => {
           ))}
         </AnimatePresence>
 
-        {/* ══════════════════════════════
-            CARD
-           ══════════════════════════════ */}
+        {/* card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92, y: 20 }}
           animate={showContent ? { opacity: 1, scale: 1, y: 0 } : {}}
@@ -331,7 +324,7 @@ const LandingPage = () => {
             {/* Soft ambient glow */}
             <div style={{ position: 'absolute', top: '-30px', right: '-30px', width: '120px', height: '120px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(251,113,133,0.06), transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
 
-            {/* ── Envelope ── */}
+            {/* envelope icon */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={showContent ? { opacity: 1, y: 0 } : {}}
@@ -348,7 +341,7 @@ const LandingPage = () => {
               >💌</motion.div>
             </motion.div>
 
-            {/* ── Title ── */}
+            {/* title */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={showContent ? { opacity: 1, y: 0 } : {}}
@@ -362,7 +355,7 @@ const LandingPage = () => {
               }}
             >For My QT...</motion.h1>
 
-            {/* ── Subtitle ── */}
+            {/* subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={showContent ? { opacity: 0.85, y: 0 } : {}}
@@ -374,7 +367,7 @@ const LandingPage = () => {
               }}
             >✨ my ladoo, my everything ✨</motion.p>
 
-            {/* ── Ornament line with heart ── */}
+            {/* divider line with heart */}
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               animate={showContent ? { opacity: 1, scaleX: 1 } : {}}
@@ -386,7 +379,7 @@ const LandingPage = () => {
               <div style={{ width: '36px', height: '1px', background: 'linear-gradient(90deg, var(--rose-light), transparent)' }} />
             </motion.div>
 
-            {/* ── Cycling love quote ── */}
+            {/* cycling quote */}
             <div style={{ minHeight: 'clamp(1.2em, 3vw, 1.5em)', marginBottom: 'clamp(0.5rem, 2vw, 1rem)' }}>
               <AnimatePresence mode="wait">
                 <motion.p
@@ -404,7 +397,7 @@ const LandingPage = () => {
               </AnimatePresence>
             </div>
 
-            {/* ── Main message card ── */}
+            {/* main message */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={showContent ? { opacity: 1, y: 0 } : {}}
@@ -445,7 +438,7 @@ const LandingPage = () => {
               </p>
             </motion.div>
 
-            {/* ═══ BUTTONS AREA ═══ */}
+            {/* buttons */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={showContent ? { opacity: 1, y: 0 } : {}}
@@ -470,7 +463,7 @@ const LandingPage = () => {
                 ))}
               </AnimatePresence>
 
-              {/* ── YES BUTTON (Clean & Minimal) ── */}
+              {/* yes button */}
               <motion.button
                 whileHover={{ scale: 1.03, boxShadow: '0 8px 28px rgba(225,29,72,0.3)' }}
                 whileTap={{ scale: 0.96 }}
@@ -506,9 +499,9 @@ const LandingPage = () => {
                 letterSpacing: '0.4px', opacity: 0.5,
               }}>↑ tap here to make me the happiest ↑</p>
 
-              {/* ── NO BUTTON moved to fixed floating element outside card ── */}
+              {/* no button is floating outside the card */}
 
-              {/* ── Emotional feedback text ── */}
+              {/* emotional text when they try to click no */}
               <AnimatePresence mode="wait">
                 {hoverCount > 0 && (
                   <motion.div
@@ -557,7 +550,7 @@ const LandingPage = () => {
           </div>
         </motion.div>
 
-        {/* ═══ Floating NO button — drifts around viewport ═══ */}
+        {/* floating no button that runs away */}
         {showContent && (
           <motion.button
             initial={{ opacity: 0 }}
@@ -593,7 +586,7 @@ const LandingPage = () => {
           </motion.button>
         )}
 
-        {/* ═══ Footer pill ═══ */}
+        {/* footer */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={showContent ? { opacity: 1, y: 0 } : {}}
@@ -618,9 +611,7 @@ const LandingPage = () => {
           </div>
         </motion.div>
 
-        {/* ══════════════════════════════
-            SAD MODAL
-           ══════════════════════════════ */}
+        {/* sad popup when they keep clicking no */}
         <AnimatePresence>
           {showModal && (
             <motion.div
