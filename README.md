@@ -6,7 +6,7 @@
 
 <br>
 
-[![Live Demo](https://img.shields.io/badge/🌹_Live_Demo-valentine--beryl--omega.vercel.app-e11d48?style=for-the-badge)](https://valentine-beryl-omega.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/🌹_Live_Demo-valentine-e11d48?style=for-the-badge)](https://valentine-beryl-omega.vercel.app/)
 [![React](https://img.shields.io/badge/React_18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion)
